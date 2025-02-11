@@ -24,9 +24,11 @@ logging.getLogger("aiohttp.web").setLevel(logging.ERROR)
 
 ppath = "Adarsh/bot/plugins/*.py"
 files = glob.glob(ppath)
-StreamBot.start()
 loop = asyncio.get_event_loop()
 
+async def main():
+    await StreamBot.start()
+    await start_services()
 
 async def start_services():
     print('\n')
@@ -82,6 +84,6 @@ async def start_services():
 
 if __name__ == '__main__':
     try:
-        loop.run_until_complete(start_services())
+        loop.run_until_complete(main())  # Agora chamamos main() corretamente
     except KeyboardInterrupt:
         logging.info('----------------------- Service Stopped -----------------------')
