@@ -143,7 +143,7 @@ async def media_streamer(request: web.Request, id: int, secure_hash: str):
 
     mime_type = file_id.mime_type
     file_name = file_id.file_name
-    disposition = "inline"
+    disposition = "attachment"
 
     if mime_type:
         if not file_name:
@@ -153,7 +153,7 @@ async def media_streamer(request: web.Request, id: int, secure_hash: str):
                 file_name = f"{secrets.token_hex(2)}.unknown"
     else:
         if file_name:
-            mime_type = mime_type = mimetypes.guess_type(file_id.file_name)[0]
+            mime_type = mimetypes.guess_type(file_id.file_name)
         else:
             mime_type = "application/octet-stream"
             file_name = f"{secrets.token_hex(2)}.unknown"
