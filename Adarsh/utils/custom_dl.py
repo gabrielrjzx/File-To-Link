@@ -1,4 +1,3 @@
-import inspect
 import math
 import asyncio
 import logging
@@ -64,12 +63,6 @@ class ByteStreamer:
         Generates the media session for the DC that contains the media file.
         This is required for getting the bytes from Telegram servers.
         """
-        logging.error(f"DC ID: {file_id.dc_id}")
-        logging.error(f"CLIENT STORAGE: {client.storage}")
-        logging.error(f"SESSION CLASS: {Session}")
-        logging.error(f"SESSION MODULE: {Session.__module__}")
-        logging.error(f"SESSION FILE: {inspect.getfile(Session)}")
-        logging.error(f"SESSION SIGNATURE: {inspect.signature(Session.__init__)}")
         
         media_session = client.media_sessions.get(file_id.dc_id, None)
 
