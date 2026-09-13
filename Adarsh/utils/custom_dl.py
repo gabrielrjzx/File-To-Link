@@ -64,6 +64,8 @@ class ByteStreamer:
         Generates the media session for the DC that contains the media file.
         This is required for getting the bytes from Telegram servers.
         """
+        logging.error(f"DC ID: {file_id.dc_id}")
+        logging.error(f"CLIENT STORAGE: {client.storage}")
         logging.error(f"SESSION CLASS: {Session}")
         logging.error(f"SESSION MODULE: {Session.__module__}")
         logging.error(f"SESSION FILE: {inspect.getfile(Session)}")
